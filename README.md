@@ -1,1 +1,1 @@
-Credit Original: https://github.com/onemadgeek
+Credit Original: [OneMadGeeek](https://github.com/onemadgeek)
