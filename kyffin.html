@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Kyffin</title>
+    <link rel="shortcut icon" href="img/img.png" type="image/png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        pre {
+            text-align: center;
+            color: red;
+            animation: fade-in 15s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        #image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: fade-in 15s ease-out forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0);
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(10vw);
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre></pre>
+    <img id="image" src="img/img.png" alt="Kyffin " style="width: 20%; height: auto;">
+    <audio id="audio" src="/audio.mp3"></audio>
+    <script>
+        const audio = document.getElementById('audio');
+        audio.currentTime = 0;
+        audio.play();
+
+        window.onload = function () {
+            const pre = document.querySelector('pre');
+            pre.style.opacity = 1;
+
+            const image = document.getElementById('image');
+            image.style.opacity = 0;
+        };
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake ' + (Math.random() < 0.75 ? 'red' : 'green');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = 2 + Math.random() * 4 + 's';
+            snowflake.style.animationDelay = Math.random() * 1 + 's';
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, (parseFloat(snowflake.style.animationDuration) + parseFloat(snowflake.style.animationDelay)) * 1000);
+        }
+
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+
+</html>
