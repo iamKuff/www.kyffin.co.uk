@@ -1,7 +1,13 @@
-// glitch text
+// Glitch text
 
-var things = ['coding','knitting','blogging','blogging','blogging','blogging','blogging','designing','planning','writing','writing','writing','writing','writing','writing','writing','programming','programming','programming','programming','programming','concluding','programming','thinking','scripting','scripting','scripting','scripting','scripting','sewing','sketching','ruminating','deliberating','pondering','contemplating','abstracting','abstracting','abstracting','abstracting','abstracting','abstracting','optimising','optimising','optimising','optimising','optimising','optimising','refactoring','refactoring','refactoring','objectifying','simplifying','decoupling','debugging','debugging','debugging','debugging','debugging','debugging','configuring','streamlining','searching','tweaking','editing'];
-var junk = ['#','@','%','*','&amp;','&lt;','&gt;','_','=','+','[',']','|','-','!','?','X'];
+const things = ['coding', 'knitting', 'blogging', 'designing', 'planning', 'writing', 'programming', 'concluding', 'thinking', 'scripting', 'sewing', 'sketching', 'ruminating', 'deliberating', 'pondering', 'contemplating', 'abstracting', 'optimising', 'refactoring', 'objectifying', 'simplifying', 'decoupling', 'debugging', 'configuring', 'streamlining', 'searching', 'tweaking', 'editing'];
+const junk = ['#', '@', '%', '*', '&amp;', '&lt;', '&gt;', '_', '=', '+', '[', ']', '|', '-', '!', '?', 'X'];
+
+const audio = new Audio('audio.mp3');
+audio.muted = true;
+audio.addEventListener("audio", () => {
+    audio.play();
+});
 
 function randomInt(min, max) {
     return Math.round(min + (Math.random() * (max - min)));
@@ -9,23 +15,23 @@ function randomInt(min, max) {
 
 function tick() {
     // Glitch effect for the text
-    var txt = things[randomInt(0, things.length - 1)];
-    var chars = txt.split('');
-    var glitch = randomInt(0, 3);
-    for (var i = 0; i < glitch; i++) {
+    let txt = things[randomInt(0, things.length - 1)];
+    let chars = txt.split('');
+    const glitch = randomInt(0, 3);
+    for (let i = 0; i < glitch; i++) {
         chars[randomInt(0, chars.length - 1)] = junk[randomInt(0, junk.length - 1)];
     }
     txt = chars.join('');
     $('#ing').html(txt);
 
     // Flickering binary code
-    var binaryElement = $('.binary-code');
-    var binary = binaryElement.text();
-    var flickerCount = 20; // Number of flickers
-    var flickerDuration = 150; // Duration of each flicker in milliseconds
+    const binaryElement = $('.binary-code');
+    const binary = binaryElement.text();
+    let flickerCount = 20; // Number of flickers
+    const flickerDuration = 150; // Duration of each flicker in milliseconds
 
     function flickerBinary() {
-        setTimeout(function() {
+        setTimeout(function () {
             binaryElement.text(generateFlickeringBinary(binary));
             flickerCount--;
             if (flickerCount > 0) {
@@ -41,8 +47,8 @@ function tick() {
 }
 
 function generateFlickeringBinary(binary) {
-    var flickeringBinary = '';
-    for (var i = 0; i < binary.length; i++) {
+    let flickeringBinary = '';
+    for (let i = 0; i < binary.length; i++) {
         if (binary[i] === '0') {
             flickeringBinary += randomInt(0, 1); // Randomly flicker between 0 and 1
         } else {
@@ -53,3 +59,9 @@ function generateFlickeringBinary(binary) {
 }
 
 tick();
+
+// Add event listener to the button
+document.getElementById("interactBtn").addEventListener("click", function() {
+    audio.muted = false;
+    audio.play();
+});
