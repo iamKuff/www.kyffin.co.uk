@@ -5,19 +5,19 @@
     <script>
     function PlayMusic() {
     
-      var play=document.getElementById("music");
+      var play=document.getElementById("music.mp3");
       play.play();
     }
     
     $(document).ready(function(){
-      setTimeout(PlayMusic,3000);
+      setTimeout(PlayMusic,1);
     })
     
     </script>
     </head>
 <body>
 
-<audio controls id="music" >
+<audio controls id="music.mp3" >
 
   <source src="https://www.computerhope.com/jargon/m/example.mp3" type="audio/mpeg">
 </audio>
