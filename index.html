@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyffins Interactive Mouse Animation</title>
+    <title>Kyffin</title>
     <style>
         body, html {
             margin: 0;
@@ -11,22 +11,10 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #282c34;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #61dafb;
-            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
         }
         canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        h1 {
-            z-index: 10;
+            display: block;
         }
     </style>
 </head>
@@ -39,7 +27,7 @@
         canvas.height = window.innerHeight;
 
         let particlesArray = [];
-        const numberOfParticles = 100;
+        const numberOfParticles = 150;
 
         class Particle {
             constructor(x, y, size, color, weight) {
@@ -48,6 +36,7 @@
                 this.size = size;
                 this.color = color;
                 this.weight = weight;
+                this.directionX = (Math.random() * 2) - 1;
             }
             draw() {
                 ctx.beginPath();
@@ -56,17 +45,19 @@
                 ctx.fill();
             }
             update() {
-                this.size -= 0.05;
+                this.size -= 0.1;
                 if (this.size < 0) {
                     this.x = (mouse.x + ((Math.random() * 20) - 10));
                     this.y = (mouse.y + ((Math.random() * 20) - 10));
-                    this.size = (Math.random() * 10) + 2;
+                    this.size = (Math.random() * 10) + 5;
                     this.weight = (Math.random() * 2) - 0.5;
+                    this.directionX = (Math.random() * 2) - 1;
                 }
                 this.y += this.weight;
                 this.weight += 0.02;
+                this.x += this.directionX;
 
-                if (this.y > canvas.height - this.size) {
+                if (this.y > canvas.height - this.size || this.y < this.size) {
                     this.weight *= -0.5;
                 }
             }
@@ -78,7 +69,7 @@
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
                 const size = (Math.random() * 5) + 1;
-                const color = '#61dafb';
+                const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
                 const weight = 1;
                 particlesArray.push(new Particle(x, y, size, color, weight));
             }
@@ -92,8 +83,8 @@
         window.addEventListener('mousemove', function(event) {
             mouse.x = event.x;
             mouse.y = event.y;
-            for (let i = 0; i < 5; i++) {
-                particlesArray.push(new Particle(mouse.x, mouse.y, Math.random() * 5 + 1, '#61dafb', Math.random() * 1 - 0.5));
+            for (let i = 0; i < 3; i++) {
+                particlesArray.push(new Particle(mouse.x, mouse.y, Math.random() * 5 + 1, `hsl(${Math.random() * 360}, 100%, 50%)`, Math.random() * 1 - 0.5));
             }
         });
 
