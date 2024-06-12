@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Animation</title>
+    <title>Kyffin</title>
     <style>
         body {
             margin: 0;
@@ -11,79 +11,61 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            background-color: #1a1a1a;
             overflow: hidden;
         }
 
-        .container {
-            position: relative;
-            width: 200px;
-            height: 200px;
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #f8e71c, #50e3c2, #b8e986, #4a90e2, #9013fe);
+            background-size: 600%;
+            animation: gradientShift 15s ease infinite, rotate 5s linear infinite;
         }
 
-        .box {
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            animation: rotate 5s infinite alternate;
+        .circle::before, .circle::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: inherit;
+            background-size: 600%;
+            animation: inherit;
+        }
+
+        .circle::before {
+            transform: translate(-150px, 0) scale(0.5);
+            animation: moveAround 10s ease infinite;
+        }
+
+        .circle::after {
+            transform: translate(150px, 0) scale(0.75);
+            animation: moveAround 10s ease infinite reverse;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .circle {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #ff6f61;
-            border-radius: 50%;
-            animation: move 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes move {
-            0% {
-                top: 0;
-                left: 0;
-            }
-            100% {
-                top: 150px;
-                left: 150px;
-            }
-        }
-
-        .triangle {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 100px solid #f8b400;
-            animation: bounce 2s infinite alternate;
-        }
-
-        @keyframes bounce {
-            0% {
-                bottom: 0;
-                transform: scale(1);
-            }
-            100% {
-                bottom: 100px;
-                transform: scale(1.2);
-            }
+        @keyframes moveAround {
+            0% { transform: translate(-150px, 0) scale(0.5); }
+            25% { transform: translate(0, -150px) scale(0.5); }
+            50% { transform: translate(150px, 0) scale(0.5); }
+            75% { transform: translate(0, 150px) scale(0.5); }
+            100% { transform: translate(-150px, 0) scale(0.5); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box"></div>
-        <div class="circle"></div>
-        <div class="triangle" style="bottom: -50px; left: 75px;"></div>
-    </div>
+    <div class="circle"></div>
 </body>
 </html>
