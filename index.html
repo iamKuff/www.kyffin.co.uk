@@ -10,9 +10,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #71b7e6, #9b59b6);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            overflow: hidden;
         }
 
         .button-container {
@@ -20,40 +21,59 @@
         }
 
         .button-container button {
-            background-color: #ff4757;
+            background: linear-gradient(45deg, #ff6f61, #de1f76);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 5px;
+            font-size: 20px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .button-container button:hover {
-            background-color: #ff6b81;
+            background: linear-gradient(45deg, #de1f76, #ff6f61);
             transform: scale(1.1);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
         }
 
         .message {
-            font-size: 2em;
-            color: white;
+            font-size: 3em;
+            color: #fff;
             margin-top: 20px;
             opacity: 0;
-            transition: opacity 1s ease, transform 1s ease;
-            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease, color 0.5s ease;
+            transform: translateY(30px);
         }
 
         .message.show {
             opacity: 1;
             transform: translateY(0);
+            color: #fff700;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .message.show {
+            animation: pulse 1s infinite;
         }
     </style>
 </head>
 <body>
     <div class="button-container">
         <button id="yappingButton">Press Me!</button>
-        <div class="message" id="yappingMessage">Stop Yapping!</div>
+        <div class="message" id="yappingMessage">Try Again!</div>
     </div>
 
     <script>
@@ -64,4 +84,3 @@
     </script>
 </body>
 </html>
-
