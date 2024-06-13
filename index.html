@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Yapping Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #ff6b81;
+            transform: scale(1.1);
+        }
+
+        .message {
+            font-size: 2em;
+            color: white;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(20px);
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button id="yappingButton">Press Me!</button>
+        <div class="message" id="yappingMessage">Stop Yapping!</div>
+    </div>
+
+    <script>
+        document.getElementById('yappingButton').addEventListener('click', function() {
+            var message = document.getElementById('yappingMessage');
+            message.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
 
