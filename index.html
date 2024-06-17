@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>kyffin.co.uk</title>
     <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes underlineMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 100% 0;
+        }
+      }
+      
       html, body {
         height: 100%;
       }
+      
       body {
         background-color: #fff;
         background: radial-gradient(circle at center, #fff 0%, #f8f8f8 75%, #ebebeb 100%);
@@ -19,21 +38,27 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        animation: fadeIn 2s ease-in-out;
       }
+      
       main {
         padding: 1rem;
         text-align: center;
       }
+      
       h1 {
         font-size: 2.5rem;
         line-height: 1.1;
         margin: 0;
+        position: relative;
       }
+      
       @media screen and (max-width: 480px) {
         h1 {
           font-size: 1.5rem;
         }
       }
+      
       h1::after {
         content: "";
         background-color: #ffe800;
@@ -41,11 +66,15 @@
         display: block;
         height: 0.5rem;
         margin-top: 1rem;
+        animation: underlineMove 2s linear infinite;
+        background-size: 200% 100%;
       }
+      
       img {
         max-width: 100%;
         height: auto;
       }
+      
       p {
         margin: 1rem 0 0 0;
       }
