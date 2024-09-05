@@ -3,31 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Kyffin - Welcome to My Site</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        .button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header h1 {
+            margin: 0;
             text-align: center;
-            text-decoration: none;
+            font-size: 40px;
+        }
+        .highlight {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        .content {
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .btn {
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 8px;
+            background: #e8491d;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #333333;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Click the button below to view the Welsh Bacc Project:</p>
-    <button class="button" onclick="window.location.href='/coffee-shop/CoffeeShop-welshbaccproject.html'">Welsh Bacc Project</button>
+    <header>
+        <div class="container">
+            <h1>Welcome to <span class="highlight">Kyffin</span></h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>About Us</h2>
+            <p>Kyffin.co.uk is my website which i yet still dont know what to do with</p>
+            
+            <h2>My Services</h2>
+            <ul>
+                <li>Uefn/Verse Development</li>
+                <li>Fivem/Lua Development</li>
+                <li>Digital Marketing</li>
+            </ul>
+            
+            <h2>Get in Touch</h2>
+            <p>I'd love to hear from you! Contact me to learn more about how I can help you.</p>
+            <a href="#" class="btn">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kyffin.co.uk. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
